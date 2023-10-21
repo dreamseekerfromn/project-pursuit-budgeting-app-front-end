@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { destroySpending, getOneSpending } from "../../api/fetch";
-
+import SpendingSingleItem from "./SpendingSingleItem";
 function LogDetails() {
-  const [spendingItem, setSpendingItem] = useState([]);
+  const [spendingItem, setSpendingItem] = useState(    {
+    id: "",
+    date: "",
+    sourceTitle: "",
+    sourceDescription: "",
+    sourceFrom: "",
+    amount: 0,
+    sourceCategory: 0,
+    period: 0,
+    misc: {},
+  });
   let { id } = useParams();
   const nav = useNavigate();
 
@@ -32,27 +42,27 @@ function LogDetails() {
   return (
     <article>
       <h3>
-        {log.mistakesWereMadeToday ? <span>⭐️</span> : null} {log.captainName}
+        {spendingItem.sourceTitle}
       </h3>
       <h5>
         <span>
-          <Link to={`/logs/${log.title}`}>{log.captainName}</Link>
+          <Link to={`/spending/date/${spendingItem.date}`}>{spendingItem.date}</Link>
         </span>{" "}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {log.title}
+        {spendingItem.sourceTitle}
       </h5>
-      <h6>{log.post}</h6>
-      <p>{log.daysSinceLastCrisis}</p>
+      <h6>{spendingItem.amount}</h6>
+      <p>{spendingItem.sourceDescription}</p>
       <div className="showNavigation">
         <div>
           {" "}
-          <Link to={`/logs`}>
+          <Link to={`/spending`}>
             <button>Back</button>
           </Link>
         </div>
         <div>
           {" "}
-          <Link to={`/logs/${index}/edit`}>
+          <Link to={`/spending/${spendingItem.id}/edit`}>
             <button>Edit</button>
           </Link>
         </div>

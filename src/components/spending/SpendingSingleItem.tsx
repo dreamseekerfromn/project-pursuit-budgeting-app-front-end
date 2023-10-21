@@ -1,36 +1,24 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-
-interface singleItemProp
-    {
-        id: string,
-        date: string,
-        sourceTitle: string,
-        sourceDescription: string,
-        sourceFrom: string,
-        amount: number,
-        sourceCategory: number,
-        period: number,
-        misc: any,
-      }
+//import { useState, useEffect } from "react";
+import { singleItemProp } from "../../interface/interface";
 
 function SpendingSingleItem({ item }: { item: singleItemProp}) {
   return (
-    <tr>
+    <tr style={{ cursor: "alias" }}>
       <td>
-        {item.mistakesWereMadeToday ? (
-          <span>⭐️</span>
-        ) : (
-          <span>&nbsp; &nbsp; &nbsp;</span>
-        )}
+        <Link to={`/spending/${item["id"]}`}>
+          {item["date"]}
+        </Link>
       </td>
-      <td style={{ cursor: "alias" }}>
+      <td>
         <Link to={`/spending/${item["id"]}`}>
           {item["sourceTitle"]}
         </Link>
       </td>
       <td>
-        <Link to={`/spending/${item["id"]}`}>✏️</Link>
+        <Link to={`/spending/${item["id"]}`}>
+          {item["amount"]}
+        </Link>
       </td>
     </tr>
   );
