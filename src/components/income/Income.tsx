@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-//import Log from "./Log.jsx";
 import { getAllIncome } from "../../api/fetch.js";
 import IncomeSingleItem from "./IncomeSingleItem.js";
+import './Income.css';
+
 
 function Income() {
   const [IncomeItems, setIncomeItems] = useState([
@@ -28,7 +29,7 @@ function Income() {
   })},[]);
 
   return (
-    <div className="IncomeItems">
+    <div className="IncomeItems containers">
       <section>
         <table>
           <thead>

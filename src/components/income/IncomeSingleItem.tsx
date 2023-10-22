@@ -17,7 +17,7 @@ function IncomeSingleItem({ item }: { item: singleItemProp}) {
       </td>
       <td>
         <Link to={`/Income/${item.id}`}>
-          {item["amount"]}
+          {Number(item["amount"]).toFixed(2)}
         </Link>
       </td>
     </tr>

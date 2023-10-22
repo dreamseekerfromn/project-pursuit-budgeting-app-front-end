@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-//import Log from "./Log.jsx";
 import { getAllSpending } from "../../api/fetch.js";
 import SpendingSingleItem from "./SpendingSingleItem.js";
+import './Spending.css';
 
 function Spending() {
   const [spendingItems, setSpendingItems] = useState([
@@ -28,7 +28,7 @@ function Spending() {
   })},[]);
 
   return (
-    <div className="SpendingItems">
+    <div className="SpendingItems container">
       <section className="spending-index-wrapper">
         <table>
           <thead>

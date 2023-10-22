@@ -5,11 +5,11 @@ export default function Nav() {
   return (
     <header>
       <nav>
-        <h1>
+        <h2 style={{font:"Comic Sans MS"}}>
           <Link to="/">
-            Budget App
+            SY's Budget App
           </Link>
-        </h1>
+        </h2>
         <ul>
           <li>
             <Link to="/income">Income</Link>
@@ -19,10 +19,7 @@ export default function Nav() {
           </li>
         </ul>
         <button>
-          <Link to="/spending/new">New Spending</Link>
-        </button>
-        <button>
-          <Link to="/income/new">New Income</Link>
+          <Link to="/new">New Entry</Link>
         </button>
       </nav>
     </header>

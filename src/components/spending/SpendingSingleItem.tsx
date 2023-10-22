@@ -17,7 +17,7 @@ function SpendingSingleItem({ item }: { item: singleItemProp}) {
       </td>
       <td>
         <Link to={`/spending/${item.id}`}>
-          {item["amount"]}
+          {Number(item["amount"]).toFixed(2)}
         </Link>
       </td>
     </tr>

@@ -12,6 +12,7 @@ import IncomeSingleItemDetails from "./components/income/IncomeSingleItemDetail"
 import IncomeNewEntryForm from "./components/income/IncomeNewEntryForm";
 import IncomeEditForm from "./components/income/IncomeEditForm";
 import FourOFour from "./components/page/FoF";
+import NewEntryForm from "./components/page/NewEntryForm";
 
 function App() {
   return (
@@ -22,11 +23,10 @@ function App() {
           {/* shows */}
           <Route path="/" element={<Home />} />
           <Route path="/spending" element={<Spending />} />
-          <Route path="/spending/new" element={<SpendingNewEntryForm />} />
+          <Route path="/new" element={<NewEntryForm />} />
           <Route path="/spending/:id" element={<SpendingSingleItemDetail />} />
           <Route path="/spending/:id/edit" element={<SpendingEditForm />} />
           <Route path="/income" element={<Income />} />
-          <Route path="/income/new" element={<IncomeNewEntryForm />} />
           <Route path="/income/:id" element={<IncomeSingleItemDetails />} />
           <Route path="/income/:id/edit" element={<IncomeEditForm />} />
           <Route path='*' element={<FourOFour />} />
