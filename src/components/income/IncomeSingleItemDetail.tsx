@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { destroySpending, getOneSpending } from "../../api/fetch";
-import SpendingSingleItem from "./SpendingSingleItem";
-function SpendingSingleItemDetails() {
-  const [spendingItem, setSpendingItem] = useState(    {
+import { destroyIncome, getOneIncome } from "../../api/fetch";
+import IncomeSingleItem from "./IncomeSingleItem";
+function IncomeSingleItemDetails() {
+  const [IncomeItem, setIncomeItem] = useState(    {
     id: "",
     date: "",
     sourceTitle: "",
@@ -18,9 +18,9 @@ function SpendingSingleItemDetails() {
   const nav = useNavigate();
 
   useEffect(() => {
-    getOneSpending(String(id))
-      .then((showSingleItem) => {
-        setSpendingItem({...showSingleItem[0]});
+    getOneIncome(String(id))
+      .then((showSingleItem:any) => {
+        setIncomeItem({...showSingleItem[0]});
       })
       .catch((err) => {
         console.error(err);
@@ -28,11 +28,11 @@ function SpendingSingleItemDetails() {
   }, [id]);
 
   const handleDelete = () => {
-    destroySpending(String(id))
+    destroyIncome(String(id))
       .then(() => {
         console.log(`${id} is deleted successfully from the database`);
         alert(`${id} is deleted successfully from the database`);
-        nav("/spending");
+        nav("/Income");
       })
       .catch((err) => {
         console.error(err);
@@ -42,27 +42,27 @@ function SpendingSingleItemDetails() {
   return (
     <article>
       <h3>
-        {spendingItem.sourceTitle}
+        {IncomeItem.sourceTitle}
       </h3>
       <h5>
         <span>
-          <Link to={`/spending/date/${spendingItem.date}`}>{spendingItem.date}</Link>
+          <Link to={`/Income/date/${IncomeItem.date}`}>{IncomeItem.date}</Link>
         </span>{" "}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {spendingItem.sourceTitle}
+        {IncomeItem.sourceTitle}
       </h5>
-      <h6>{spendingItem.amount}</h6>
-      <p>{spendingItem.sourceDescription}</p>
+      <h6>{IncomeItem.amount}</h6>
+      <p>{IncomeItem.sourceDescription}</p>
       <div className="showNavigation">
         <div>
           {" "}
-          <Link to={`/spending`}>
+          <Link to={`/Income`}>
             <button>Back</button>
           </Link>
         </div>
         <div>
           {" "}
-          <Link to={`/spending/${spendingItem.id}/edit`}>
+          <Link to={`/Income/${IncomeItem.id}/edit`}>
             <button>Edit</button>
           </Link>
         </div>
@@ -75,4 +75,4 @@ function SpendingSingleItemDetails() {
   );
 }
 
-export default SpendingSingleItemDetails;
+export default IncomeSingleItemDetails;

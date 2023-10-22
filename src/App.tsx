@@ -1,11 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import './App.css'
+import Home from "./components/page/Home";
+import Nav from "./components/page/Nav";
+import Footer from "./components/page/Footer";
+import './App.css';
 import Spending from "./components/spending/Spending";
 import SpendingNewEntryForm from "./components/spending/SpendingNewEntryForm";
 import SpendingEditForm from "./components/spending/SpendingEditForm";
+import SpendingSingleItemDetail from "./components/spending/SpendingSingleItemDetail";
+import Income from "./components/income/Income";
+import IncomeSingleItemDetails from "./components/income/IncomeSingleItemDetail";
+import IncomeNewEntryForm from "./components/income/IncomeNewEntryForm";
+import IncomeEditForm from "./components/income/IncomeEditForm";
+import FourOFour from "./components/page/FoF";
 
 function App() {
   return (
@@ -17,7 +23,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/spending" element={<Spending />} />
           <Route path="/spending/new" element={<SpendingNewEntryForm />} />
-          <Route path="/spending/edit/:id" element={<SpendingEditForm />} />
+          <Route path="/spending/:id" element={<SpendingSingleItemDetail />} />
+          <Route path="/spending/:id/edit" element={<SpendingEditForm />} />
+          <Route path="/income" element={<Income />} />
+          <Route path="/income/new" element={<IncomeNewEntryForm />} />
+          <Route path="/income/:id" element={<IncomeSingleItemDetails />} />
+          <Route path="/income/:id/edit" element={<IncomeEditForm />} />
+          <Route path='*' element={<FourOFour />} />
         </Routes>
         <Footer />
       </Router>

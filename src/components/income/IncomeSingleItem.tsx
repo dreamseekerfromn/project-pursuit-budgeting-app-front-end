@@ -2,21 +2,21 @@ import { Link } from "react-router-dom";
 //import { useState, useEffect } from "react";
 import { singleItemProp } from "../../interface/interface";
 
-function SpendingSingleItem({ item }: { item: singleItemProp}) {
+function IncomeSingleItem({ item }: { item: singleItemProp}) {
   return (
     <tr style={{ cursor: "alias" }}>
       <td>
-        <Link to={`/spending/${item.id}`}>
+        <Link to={`/Income/${item.id}`}>
           {item["date"]}
         </Link>
       </td>
       <td>
-        <Link to={`/spending/${item.id}`}>
+        <Link to={`/Income/${item.id}`}>
           {item["sourceTitle"]}
         </Link>
       </td>
       <td>
-        <Link to={`/spending/${item.id}`}>
+        <Link to={`/Income/${item.id}`}>
           {item["amount"]}
         </Link>
       </td>
@@ -24,4 +24,4 @@ function SpendingSingleItem({ item }: { item: singleItemProp}) {
   );
 }
 
-export default SpendingSingleItem;
+export default IncomeSingleItem;

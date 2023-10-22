@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { createSpending } from "../../api/fetch";
+import { nanoid } from 'nanoid';
 
 enum period {
     onetime = 0,
@@ -21,7 +22,7 @@ enum sourceCategory {
 
 function SpendingNewEntryForm() {
   const [spendingItem, setSpendingItem] = useState({
-    id: "",
+    id: nanoid(),
     date: "",
     sourceTitle: "",
     sourceDescription: "",
@@ -35,6 +36,10 @@ function SpendingNewEntryForm() {
 
   const handleTextChange = (event:any) => {
     setSpendingItem({ ...spendingItem, [event.target.id]: event.target.value });
+  };
+
+  const handleTextChange2 = (event:any) => {
+    setSpendingItem({ ...spendingItem, [event.target.id]: Number(event.target.value) });
   };
 
   /*
@@ -55,7 +60,16 @@ function SpendingNewEntryForm() {
   return (
     <div className="New">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="Item name">Captain's Name:</label>
+        <label htmlFor="date">Date:</label>
+        <input
+          id="date"
+          value={spendingItem.date}
+          type="date"
+          onChange={handleTextChange}
+          placeholder="yyyy-mm-dd"
+          required
+        />
+        <label htmlFor="Item name">Source Title:</label>
         <input
           id="sourceTitle"
           value={spendingItem.sourceTitle}
@@ -64,7 +78,7 @@ function SpendingNewEntryForm() {
           placeholder="Item Name"
           required
         />
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Source From:</label>
         <input
           id="sourceFrom"
           type="text"
@@ -73,19 +87,22 @@ function SpendingNewEntryForm() {
           placeholder="The source came from..."
           onChange={handleTextChange}
         />
-        <label htmlFor="sourceDescription">Description:</label>
+        <label htmlFor="sourceDescription">Source Description:</label>
         <textarea
           id="sourceDescription"
           value={spendingItem.sourceDescription}
           placeholder="Description"
           onChange={handleTextChange}
         />
-        <label htmlFor="daysSinceLastCrisis">Days since the last crisis:</label>
+        <label htmlFor="amount">Amount:</label>
         <input
           id="amount"
           name="amount"
+          type="number"
+          step="0.01"
+          min="0"
           value={spendingItem.amount}
-          onChange={handleTextChange}
+          onChange={handleTextChange2}
           placeholder="How much?"
         />
         <br />

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getOneSpending, updateSpending } from "../../api/fetch";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { createIncome } from "../../api/fetch";
+import { nanoid } from 'nanoid';
 
 enum period {
     onetime = 0,
@@ -19,11 +20,9 @@ enum sourceCategory {
     etc,
 }
 
-function SpendingEditForm() {
-  const params = useParams();
-  let { id } = params;
-  const [spendingItem, setSpendingItem] = useState({
-    id: "",
+function IncomeNewEntryForm() {
+  const [IncomeItem, setIncomeItem] = useState({
+    id: nanoid(),
     date: "",
     sourceTitle: "",
     sourceDescription: "",
@@ -35,76 +34,63 @@ function SpendingEditForm() {
   });
   const nav = useNavigate();
 
-  useEffect(() => {
-    getOneSpending(String(id))
-      .then((itemData) =>{
-        setSpendingItem({...itemData[0]});
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  },[id]);
-
   const handleTextChange = (event:any) => {
-    setSpendingItem({ ...spendingItem, [event.target.id]: event.target.value });
+    setIncomeItem({ ...IncomeItem, [event.target.id]: event.target.value });
   };
 
   const handleTextChange2 = (event:any) => {
-    setSpendingItem({ ...spendingItem, [event.target.id]: Number(event.target.value) });
+    setIncomeItem({ ...IncomeItem, [event.target.id]: Number(event.target.value) });
   };
-
 
   /*
   const handleCheckboxChange = () => {
-    setSpendingItem({ ...spendingItem, mistakesWereMadeToday: !log.mistakesWereMadeToday });
+    setIncomeItem({ ...IncomeItem, mistakesWereMadeToday: !log.mistakesWereMadeToday });
   };
   */
 
   /** TODO */
   const handleSubmit = (event:any) => {
     event.preventDefault();
-    console.log(spendingItem);
-    updateSpending(String(id), spendingItem).then(() => {
+    createIncome(IncomeItem).then(() => {
       console.log("create success");
-      console.log(spendingItem);
-      nav('/spending');
+      nav('/Income');
     }).catch((err:any)=>console.error(err));
   };
 
   return (
-    <div className="edit">
+    <div className="New">
       <form onSubmit={handleSubmit}>
-      <label htmlFor="date">Date:</label>
+        <label htmlFor="date">Date:</label>
         <input
           id="date"
-          value={spendingItem.date}
+          value={IncomeItem.date}
           type="date"
           onChange={handleTextChange}
           placeholder="yyyy-mm-dd"
           required
         />
-        <label htmlFor="Item name">Item Name:</label>
+        <label htmlFor="Item name">Source Title:</label>
         <input
           id="sourceTitle"
-          value={spendingItem.sourceTitle}
+          value={IncomeItem.sourceTitle}
           type="text"
           onChange={handleTextChange}
           placeholder="Item Name"
           required
         />
-        <label htmlFor="from">Source From:</label>
+        <label htmlFor="title">Source From:</label>
         <input
           id="sourceFrom"
           type="text"
           required
-          value={spendingItem.sourceFrom}
+          value={IncomeItem.sourceFrom}
           placeholder="The source came from..."
           onChange={handleTextChange}
         />
-        <label htmlFor="sourceDescription">Description:</label>
+        <label htmlFor="sourceDescription">Source Description:</label>
         <textarea
           id="sourceDescription"
-          value={spendingItem.sourceDescription}
+          value={IncomeItem.sourceDescription}
           placeholder="Description"
           onChange={handleTextChange}
         />
@@ -115,7 +101,7 @@ function SpendingEditForm() {
           type="number"
           step="0.01"
           min="0"
-          value={spendingItem.amount}
+          value={IncomeItem.amount}
           onChange={handleTextChange2}
           placeholder="How much?"
         />
@@ -126,4 +112,4 @@ function SpendingEditForm() {
   );
 }
 
-export default SpendingEditForm;
+export default IncomeNewEntryForm;

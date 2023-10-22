@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 //import Log from "./Log.jsx";
-import { getAllSpending } from "../../api/fetch.js";
-import SpendingSingleItem from "./SpendingSingleItem.js";
+import { getAllIncome } from "../../api/fetch.js";
+import IncomeSingleItem from "./IncomeSingleItem.js";
 
-function Spending() {
-  const [spendingItems, setSpendingItems] = useState([
+function Income() {
+  const [IncomeItems, setIncomeItems] = useState([
     {
         id: "",
         date: "",
@@ -20,16 +20,16 @@ function Spending() {
 
   useEffect(() => {
     // we need to get data 
-    getAllSpending()
-      .then((spendingJson) => {
-        setSpendingItems(spendingJson);
+    getAllIncome()
+      .then((IncomeJson) => {
+        setIncomeItems(IncomeJson);
       })
       .catch((err)=> {console.error(err);
   })},[]);
 
   return (
-    <div className="SpendingItems">
-      <section className="spending-index-wrapper">
+    <div className="IncomeItems">
+      <section>
         <table>
           <thead>
             <tr>
@@ -38,9 +38,9 @@ function Spending() {
               <th>Amount</th>
             </tr>
           </thead>
-          <tbody className="spending-index">
-            {spendingItems.map((item) => {
-              return <SpendingSingleItem key={item.id} item={item} />;
+          <tbody>
+            {IncomeItems.map((item) => {
+              return <IncomeSingleItem key={item.id} item={item} />;
             })}
           </tbody>
         </table>
@@ -49,4 +49,4 @@ function Spending() {
   );
 }
 
-export default Spending;
+export default Income;

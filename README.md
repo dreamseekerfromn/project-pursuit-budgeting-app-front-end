@@ -1,8 +1,22 @@
-# React + TypeScript + Vite
+# Simple Budgeting App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+The Simple Budgeting App is purposed to save & handle your basic income, and spending info by manually on the personal webpage.
+Currently, this app supports only for the personal use.
+
+## Why Do I Develop This App?
+
+- This budget app is developped for the Pursuit 10.2 module 4 project.
+- I, as a developer, want to build w/ simple function, and simple looking app.
+- I have wanted to practice typescript.
+- I have messed up w/ time schedule, but wanted to put more "fancy" stuff.
+
+## How To Use
+
+
+
+
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
