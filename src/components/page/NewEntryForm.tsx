@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { createIncome, createSpending } from "../../api/fetch";
 import { nanoid } from 'nanoid';
+import { singleItemProp } from "../../interface/interface";
 
 enum entryType {
   income = 0,
   spending,
 }
 
+/*
 enum period {
     onetime = 0,
     weekly,
@@ -24,7 +26,7 @@ enum sourceCategory {
     entertainment,
     etc,
 }
-
+*/
 function NewEntryForm() {
   const [IncomeItem, setIncomeItem] = useState({
     id: nanoid(),
@@ -37,28 +39,26 @@ function NewEntryForm() {
     period: 0,
     misc: {},
   });
+  const [entryType, setEntryType] = useState(true);
   const nav = useNavigate();
 
-  const handleTextChange = (event:any) => {
+  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setIncomeItem({ ...IncomeItem, [event.target.id]: event.target.value });
   };
 
-  const handleTextChange2 = (event:any) => {
+  const handleTextChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIncomeItem({ ...IncomeItem, [event.target.id]: Number(event.target.value) });
   };
 
-  /*
   const handleCheckboxChange = () => {
-    setIncomeItem({ ...IncomeItem, mistakesWereMadeToday: !log.mistakesWereMadeToday });
+    setEntryType((prev)=>!prev);
   };
-  */
+  
 
   /** TODO */
-  const handleSubmit = (event:any) => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const entrySelected = document.getElementById("in-or-out");
-    if(entrySelected.options[entrySelected.selectedIndex].value == 0){
-      console.log(entrySelected.options[entrySelected.selectedIndex].value);
+    if(entryType){
       createIncome(IncomeItem).then(() => {
         console.log("create success");
         nav('/income');
@@ -74,10 +74,9 @@ function NewEntryForm() {
 
   return (
     <div className="New">
-      <select name="in-or-out" id="in-or-out">
-        <option value={entryType.income} selected>Income</option>
-        <option value={entryType.spending}>Spending</option>
-      </select>
+      <button name="in-or-out" id="in-or-out" onClick={handleCheckboxChange}>
+        {entryType ? "Income" : "Spending"}
+      </button>
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">Date:</label>
         <input
