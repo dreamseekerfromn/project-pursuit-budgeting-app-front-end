@@ -1,25 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOneIncome, updateIncome } from "../../api/fetch";
-
-/*
-enum period {
-    onetime = 0,
-    weekly,
-    monthly,
-    querterly,
-    annually,
-}
-
-enum sourceCategory {
-    grocery = 0,
-    stock,
-    trip,
-    utility,
-    entertainment,
-    etc,
-}
-*/
+import { customInputEventBundle } from "../../interface/interface";
 
 function IncomeEditForm() {
   const params = useParams();
@@ -47,22 +29,36 @@ function IncomeEditForm() {
       })
   },[id]);
 
-  const handleTextChange = (event:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+  /**
+   * handleTextChange()
+   * ========================================
+   * change incomeItem state hook whenever input or textarea is changed.
+   * 
+   * @typedef {(React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)} customInputEventBundle 
+   * @param {customInputEventBundle} event
+   */
+  const handleTextChange = (event:customInputEventBundle) => {
     setIncomeItem({ ...IncomeItem, [event.target.id]: event.target.value });
   };
 
-  const handleTextChange2 = (event:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+  /**
+   * handleTextChange2()
+   * ========================================
+   * change incomeItem state hook especially for the amount property.
+   * 
+   * @typedef {(React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)} customInputEventBundle
+   * @param {customInputEventBundle} event
+   */
+  const handleTextChange2 = (event:customInputEventBundle) => {
     setIncomeItem({ ...IncomeItem, [event.target.id]: Number(event.target.value) });
   };
 
-
-  /*
-  const handleCheckboxChange = () => {
-    setIncomeItem({ ...IncomeItem, mistakesWereMadeToday: !log.mistakesWereMadeToday });
-  };
-  */
-
-  /** TODO */
+  /**
+   * handleSubmit()
+   * ================================
+   * PUT updated data to the back-end.
+   * @param {React.ChangeEvent<HTMLFormElement>} event 
+   */
   const handleSubmit = (event:React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(IncomeItem);

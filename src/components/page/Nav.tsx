@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 //import './Nav.css';
 
+/**
+ * Nav()
+ * =========================================
+ * renders a navigator bar on the top of the page.
+ *  
+ * @returns {React.ReactElement}
+ */
 export default function Nav() {
   return (
     <header>

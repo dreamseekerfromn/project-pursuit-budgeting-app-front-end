@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-//import { useState, useEffect } from "react";
 import { singleItemProp } from "../../interface/interface";
 
 function IncomeSingleItem({ item }: { item: singleItemProp}) {

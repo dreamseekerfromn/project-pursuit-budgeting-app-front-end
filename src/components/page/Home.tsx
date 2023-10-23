@@ -3,13 +3,24 @@ import { getAllIncome, getAllSpending } from "../../api/fetch";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
+/**
+ * Home()
+ * =========================
+ * renders main page w/ total saving and a doughnut chart.
+ * 
+ * @returns {React.ReactElement}
+ */
 export default function Home(){
+    /** Initializes chartjs for react-chartjs-2 */
     ChartJS.register(ArcElement, Tooltip, Legend);
+
+    /** declare state hooks */
     const [ totalSave, setTotalSave ] = useState(0);
     const [ totalIncome, setTotalIncome ] = useState(0);
     const [ totalSpending, setTotalSpending ] = useState(0);
     const [ loaded, setLoaded ] = useState(false);
 
+    /** initializes basic data structure for the doughnut chart */
     let data = {
         labels: ['Income', 'Spending'],
         datasets: [
@@ -51,7 +62,6 @@ export default function Home(){
                 }
             ]
         }
-        console.log(totalSave);
     },[]);
 
     useEffect(() => {
@@ -65,7 +75,7 @@ export default function Home(){
             <h2 style={totalSave > 100 ? {color:"green"} : totalSave <= 100 && totalSave > 0 ? {color:"yellow"} : {color:"red"}}>Current Save : $ {Number(totalSave).toFixed(2)}</h2>
             <Doughnut data={data} />
             </>
-        ) : (<span>loading</span>)}
+        ) : (<span>Loading</span>)}
         
     </div>)
 }

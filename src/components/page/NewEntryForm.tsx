@@ -2,33 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { createIncome, createSpending } from "../../api/fetch";
 import { nanoid } from 'nanoid';
-//import { singleItemProp } from "../../interface/interface";
-/*
-enum entryType {
-  income = 0,
-  spending,
-}
-*/
-/*
-enum period {
-    onetime = 0,
-    weekly,
-    monthly,
-    querterly,
-    annually,
-}
+import { customInputEventBundle } from "../../interface/interface";
 
-enum sourceCategory {
-    grocery = 0,
-    stock,
-    trip,
-    utility,
-    entertainment,
-    etc,
-}
-*/
+/**
+ * NewEntryForm()
+ * ==============================
+ * Page to POST a new data to income or spending.
+ * 
+ * @returns {React.ReactElement}
+ */
 function NewEntryForm() {
-  const [IncomeItem, setIncomeItem] = useState({
+  const [incomeItem, setIncomeItem] = useState({
     id: nanoid(),
     date: "",
     sourceTitle: "",
@@ -42,30 +26,55 @@ function NewEntryForm() {
   const [entryType, setEntryType] = useState(true);
   const nav = useNavigate();
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    setIncomeItem({ ...IncomeItem, [event.target.id]: event.target.value });
+  /**
+   * handleTextChange()
+   * ========================================
+   * change incomeItem state hook whenever input or textarea is changed.
+   * 
+   * @typedef {(React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)} customInputEventBundle 
+   * @param {customInputEventBundle} event
+   */
+  const handleTextChange = (event: customInputEventBundle) => {
+    setIncomeItem({ ...incomeItem, [event.target.id]: event.target.value });
   };
 
-  const handleTextChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIncomeItem({ ...IncomeItem, [event.target.id]: Number(event.target.value) });
+  /**
+   * handleTextChange2()
+   * ========================================
+   * change incomeItem state hook especially for the amount property.
+   * 
+   * @typedef {(React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)} customInputEventBundle
+   * @param {customInputEventBundle} event
+   */
+  const handleTextChange2 = (event: customInputEventBundle) => {
+    setIncomeItem({ ...incomeItem, [event.target.id]: Number(event.target.value) });
   };
 
+  /**
+   * handleCheckboxChange()
+   * ================================
+   * clicking a income/spending button will change vice versa.
+   */
   const handleCheckboxChange = () => {
     setEntryType((prev)=>!prev);
   };
   
-
-  /** TODO */
+  /**
+   * handleSubmit()
+   * ================================
+   * POST a new data to the back-end.
+   * @param {React.ChangeEvent<HTMLFormElement>} event 
+   */
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(entryType){
-      createIncome(IncomeItem).then(() => {
+      createIncome(incomeItem).then(() => {
         console.log("create success");
         nav('/income');
       }).catch((err:any)=>console.error(err));
     }
     else{
-      createSpending(IncomeItem).then(() => {
+      createSpending(incomeItem).then(() => {
         console.log("create success");
         nav('/spending');
       }).catch((err:any)=>console.error(err));
@@ -81,7 +90,7 @@ function NewEntryForm() {
         <label htmlFor="date">Date:</label>
         <input
           id="date"
-          value={IncomeItem.date}
+          value={incomeItem.date}
           type="date"
           onChange={handleTextChange}
           placeholder="yyyy-mm-dd"
@@ -90,7 +99,7 @@ function NewEntryForm() {
         <label htmlFor="Item name">Source Title:</label>
         <input
           id="sourceTitle"
-          value={IncomeItem.sourceTitle}
+          value={incomeItem.sourceTitle}
           type="text"
           onChange={handleTextChange}
           placeholder="Item Name"
@@ -101,14 +110,14 @@ function NewEntryForm() {
           id="sourceFrom"
           type="text"
           required
-          value={IncomeItem.sourceFrom}
+          value={incomeItem.sourceFrom}
           placeholder="The source came from..."
           onChange={handleTextChange}
         />
         <label htmlFor="sourceDescription">Source Description:</label>
         <textarea
           id="sourceDescription"
-          value={IncomeItem.sourceDescription}
+          value={incomeItem.sourceDescription}
           placeholder="Description"
           onChange={handleTextChange}
         />
@@ -119,7 +128,7 @@ function NewEntryForm() {
           type="number"
           step="0.01"
           min="0"
-          value={IncomeItem.amount}
+          value={incomeItem.amount}
           onChange={handleTextChange2}
           placeholder="How much?"
         />
