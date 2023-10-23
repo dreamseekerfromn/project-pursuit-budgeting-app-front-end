@@ -8,6 +8,8 @@ export default function Home(){
     const [ totalSave, setTotalSave ] = useState(0);
     const [ totalIncome, setTotalIncome ] = useState(0);
     const [ totalSpending, setTotalSpending ] = useState(0);
+    const [ loaded, setLoaded ] = useState(false);
+
     let data = {
         labels: ['Income', 'Spending'],
         datasets: [
@@ -49,11 +51,21 @@ export default function Home(){
                 }
             ]
         }
+        console.log(totalSave);
     },[]);
+
+    useEffect(() => {
+        (totalIncome != 0 && totalSpending != 0) ? setLoaded(true) : setLoaded(false);
+    },[totalIncome, totalSave, totalSpending]);
 
     return(
     <div className="container">
-        <h2 style={totalSave > 100 ? {color:"green"} : totalSave <= 100 && totalSave > 0 ? {color:"yellow"} : {color:"red"}}>Current Save : $ {Number(totalSave).toFixed(2)}</h2>
-        <Doughnut data={data} />;
+        {loaded ? (
+            <>
+            <h2 style={totalSave > 100 ? {color:"green"} : totalSave <= 100 && totalSave > 0 ? {color:"yellow"} : {color:"red"}}>Current Save : $ {Number(totalSave).toFixed(2)}</h2>
+            <Doughnut data={data} />
+            </>
+        ) : (<span>loading</span>)}
+        
     </div>)
 }

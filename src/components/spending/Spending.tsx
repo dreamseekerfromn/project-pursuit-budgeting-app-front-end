@@ -29,6 +29,7 @@ function Spending() {
 
   return (
     <div className="SpendingItems container">
+      {spendingItems.length > 0 ? (
       <section className="spending-index-wrapper">
         <table>
           <thead>
@@ -45,6 +46,7 @@ function Spending() {
           </tbody>
         </table>
       </section>
+      ) : (<span>loading</span>)}
     </div>
   );
 }

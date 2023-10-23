@@ -2,6 +2,7 @@ const URL = import.meta.env.VITE_BASE_URL;
 
 // Index/Get all
 export async function getAllSpending() {
+  console.log(URL);
   return await fetch(`${URL}/spending`).then((res) => {
     return res.json();
   });

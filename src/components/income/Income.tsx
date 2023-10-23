@@ -5,7 +5,7 @@ import './Income.css';
 
 
 function Income() {
-  const [IncomeItems, setIncomeItems] = useState([
+  const [incomeItems, setIncomeItems] = useState([
     {
         id: "",
         date: "",
@@ -20,16 +20,20 @@ function Income() {
   ]);
 
   useEffect(() => {
+    console.log("HI, we entered to useEffect hook");
     // we need to get data 
     getAllIncome()
       .then((IncomeJson) => {
+        console.log(IncomeJson);
         setIncomeItems(IncomeJson);
       })
       .catch((err)=> {console.error(err);
+    console.log("Bye, we finished it");
   })},[]);
 
   return (
     <div className="IncomeItems containers">
+      {incomeItems.length != 0 ? (
       <section>
         <table>
           <thead>
@@ -40,12 +44,13 @@ function Income() {
             </tr>
           </thead>
           <tbody>
-            {IncomeItems.map((item) => {
+            {incomeItems.map((item) => {
               return <IncomeSingleItem key={item.id} item={item} />;
             })}
           </tbody>
         </table>
       </section>
+      ) : (<span>loading</span>)}
     </div>
   );
 }
