@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOneIncome, updateIncome } from "../../api/fetch";
 
+/*
 enum period {
     onetime = 0,
     weekly,
@@ -18,6 +19,7 @@ enum sourceCategory {
     entertainment,
     etc,
 }
+*/
 
 function IncomeEditForm() {
   const params = useParams();
@@ -45,11 +47,11 @@ function IncomeEditForm() {
       })
   },[id]);
 
-  const handleTextChange = (event:any) => {
+  const handleTextChange = (event:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setIncomeItem({ ...IncomeItem, [event.target.id]: event.target.value });
   };
 
-  const handleTextChange2 = (event:any) => {
+  const handleTextChange2 = (event:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setIncomeItem({ ...IncomeItem, [event.target.id]: Number(event.target.value) });
   };
 
@@ -61,7 +63,7 @@ function IncomeEditForm() {
   */
 
   /** TODO */
-  const handleSubmit = (event:any) => {
+  const handleSubmit = (event:React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(IncomeItem);
     updateIncome(String(id), IncomeItem).then(() => {

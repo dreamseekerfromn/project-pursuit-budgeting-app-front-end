@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOneSpending, updateSpending } from "../../api/fetch";
 
+/*
 enum period {
     onetime = 0,
     weekly,
@@ -17,7 +18,7 @@ enum sourceCategory {
     utility,
     entertainment,
     etc,
-}
+}*/
 
 function SpendingEditForm() {
   const params = useParams();
@@ -45,11 +46,11 @@ function SpendingEditForm() {
       })
   },[id]);
 
-  const handleTextChange = (event:any) => {
+  const handleTextChange = (event:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setSpendingItem({ ...spendingItem, [event.target.id]: event.target.value });
   };
 
-  const handleTextChange2 = (event:any) => {
+  const handleTextChange2 = (event:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setSpendingItem({ ...spendingItem, [event.target.id]: Number(event.target.value) });
   };
 
@@ -61,7 +62,7 @@ function SpendingEditForm() {
   */
 
   /** TODO */
-  const handleSubmit = (event:any) => {
+  const handleSubmit = (event:React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(spendingItem);
     updateSpending(String(id), spendingItem).then(() => {

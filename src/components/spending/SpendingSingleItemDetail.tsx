@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { destroySpending, getOneSpending } from "../../api/fetch";
-import SpendingSingleItem from "./SpendingSingleItem";
+
 function SpendingSingleItemDetails() {
   const [spendingItem, setSpendingItem] = useState(    {
     id: "",

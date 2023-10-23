@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { destroyIncome, getOneIncome } from "../../api/fetch";
-import IncomeSingleItem from "./IncomeSingleItem";
+
 function IncomeSingleItemDetails() {
   const [IncomeItem, setIncomeItem] = useState(    {
     id: "",
