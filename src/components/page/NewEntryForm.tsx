@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { createIncome, createSpending } from "../../api/fetch";
 import { nanoid } from 'nanoid';
-import { singleItemProp } from "../../interface/interface";
-
+//import { singleItemProp } from "../../interface/interface";
+/*
 enum entryType {
   income = 0,
   spending,
 }
-
+*/
 /*
 enum period {
     onetime = 0,
