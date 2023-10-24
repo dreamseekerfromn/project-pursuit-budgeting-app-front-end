@@ -7,6 +7,8 @@ Currently, this app supports only for the personal use.
 
 - [URL](https://main--genuine-melomakarona-6f33bc.netlify.app/)
 - [Back-end gitpage](https://github.com/dreamseekerfromn/project-pursuit-budgeting-app-backend)
+- [Render.com for Back-end](https://project-pursuit-budgeting-app-backend.onrender.com)
+  
 ## Why Do I Develop This App?
 
 - This budget app is developped for the Pursuit 10.2 module 4 project.
