@@ -25,7 +25,7 @@ h4 {
 }
 
 table {
-  width: 50%;
+  width: 80%;
   margin: auto;
 }
 
@@ -40,12 +40,6 @@ tbody td:not(td:first-of-type):hover {
 
 tbody tr:nth-child(even) {
   background: #f4eafd;
-}
-
-.New {
-  /* border: 1px solid gold;
-  margin: auto;
-  width: 95%; */
 }
 
 .New form {
@@ -67,10 +61,4 @@ input[type="checkbox"] {
 
 input[type="submit"] {
   width: 30%;
-}
-
-.showNavigation {
-  display: flex;
-  justify-content: space-around;
-  width: 50%;
 }

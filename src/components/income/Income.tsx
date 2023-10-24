@@ -37,7 +37,7 @@ function Income() {
   return (
     <div className="IncomeItems containers">
       {incomeItems.length != 0 ? (
-      <section>
+      <section className="spending-index-wrapper">
         <table>
           <thead>
             <tr>
