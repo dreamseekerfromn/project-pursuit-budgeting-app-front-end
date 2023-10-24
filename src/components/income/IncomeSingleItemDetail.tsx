@@ -61,8 +61,9 @@ function IncomeSingleItemDetails() {
         </h3>
         <h5>
           <span>
-            <Link to={`/Income/date/${IncomeItem.date}`}>{IncomeItem.date}</Link>
-          </span>{" "}
+            {/*<Link to={`/Income/date/${IncomeItem.date}`}></Link>*/}
+            {IncomeItem.date}
+          </span>
         </h5>
         <h6>Amount: ${IncomeItem.amount}</h6>
         <h6>Source From: {IncomeItem.sourceFrom}</h6>

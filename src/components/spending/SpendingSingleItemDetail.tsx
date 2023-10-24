@@ -60,7 +60,8 @@ function SpendingSingleItemDetails() {
         </h3>
         <h5>
           <span>
-            <Link to={`/spending/date/${spendingItem.date}`}>{spendingItem.date}</Link>
+            {/*<Link to={`/spending/date/${spendingItem.date}`}></Link>*/}
+            {spendingItem.date}
           </span>
         </h5>
         <h6>Amount: ${spendingItem.amount}</h6>
