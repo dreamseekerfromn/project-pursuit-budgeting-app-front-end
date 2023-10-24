@@ -2,7 +2,6 @@ const URL = import.meta.env.VITE_BASE_URL;
 
 // Index/Get all
 export async function getAllSpending() {
-  console.log(URL);
   return await fetch(`${URL}/spending`).then((res) => {
     return res.json();
   });
@@ -10,7 +9,6 @@ export async function getAllSpending() {
 
 // index/Get one
 export async function getOneSpending(id:string) {
-  console.log("id is " + id);
   return await fetch(`${URL}/spending/${id}`).then((res) => res.json());
 }
 
@@ -54,7 +52,6 @@ export async function getAllIncome() {
 
 // index/Get one
 export async function getOneIncome(id:string) {
-  console.log("id is " + id);
   return await fetch(`${URL}/income/${id}`).then((res) => res.json());
 }
 

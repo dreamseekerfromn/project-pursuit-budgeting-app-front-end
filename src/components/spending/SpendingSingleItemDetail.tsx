@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { destroySpending, getOneSpending } from "../../api/fetch";
+import '../../assets/styleDetail.css';
 
 /**
  * IncomeSingleItemDetails()
@@ -52,38 +53,30 @@ function SpendingSingleItemDetails() {
   };
 
   return (
-    <article>
-      <h3>
-        {spendingItem.sourceTitle}
-      </h3>
-      <h5>
-        <span>
-          <Link to={`/spending/date/${spendingItem.date}`}>{spendingItem.date}</Link>
-        </span>{" "}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {spendingItem.sourceTitle}
-      </h5>
-      <h6>Amount: ${spendingItem.amount}</h6>
-      <p>Description: {spendingItem.sourceDescription}</p>
-      <div className="showNavigation">
-        <div>
-          {" "}
-          <Link to={`/spending`}>
-            <button>Back</button>
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <Link to={`/spending/${spendingItem.id}/edit`}>
-            <button>Edit</button>
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      </div>
-    </article>
+    <section className="transection-wrapper">
+      <article className="transection-single">
+        <h3>
+          {spendingItem.sourceTitle}
+        </h3>
+        <h5>
+          <span>
+            <Link to={`/spending/date/${spendingItem.date}`}>{spendingItem.date}</Link>
+          </span>
+        </h5>
+        <h6>Amount: ${spendingItem.amount}</h6>
+        <h6>From: {spendingItem.sourceFrom}</h6>
+        <p>Description: {spendingItem.sourceDescription}</p>
+        <aside className="navigation">
+            <Link to={`/spending`}>
+              <button>Back</button>
+            </Link>
+            <Link to={`/spending/${spendingItem.id}/edit`}>
+              <button>Edit</button>
+            </Link>
+            <button onClick={handleDelete}>Delete</button>
+        </aside>
+      </article>
+    </section>
   );
 }
 

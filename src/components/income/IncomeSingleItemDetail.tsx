@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { destroyIncome, getOneIncome } from "../../api/fetch";
+import '../../assets/styleDetail.css';
+
 
 /**
  * IncomeSingleItemDetails()
@@ -52,38 +54,30 @@ function IncomeSingleItemDetails() {
   };
 
   return (
-    <article>
-      <h3>
-        {IncomeItem.sourceTitle}
-      </h3>
-      <h5>
-        <span>
-          <Link to={`/Income/date/${IncomeItem.date}`}>{IncomeItem.date}</Link>
-        </span>{" "}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {IncomeItem.sourceTitle}
-      </h5>
-      <h6>Amount: ${IncomeItem.amount}</h6>
-      <p>Description: {IncomeItem.sourceDescription}</p>
-      <div className="showNavigation">
-        <div>
-          {" "}
-          <Link to={`/Income`}>
-            <button>Back</button>
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <Link to={`/Income/${IncomeItem.id}/edit`}>
-            <button>Edit</button>
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      </div>
-    </article>
+    <section className="transection-wrapper">
+      <article className="transection-single">
+        <h3>
+          {IncomeItem.sourceTitle}
+        </h3>
+        <h5>
+          <span>
+            <Link to={`/Income/date/${IncomeItem.date}`}>{IncomeItem.date}</Link>
+          </span>{" "}
+        </h5>
+        <h6>Amount: ${IncomeItem.amount}</h6>
+        <h6>Source From: {IncomeItem.sourceFrom}</h6>
+        <p>Description: {IncomeItem.sourceDescription}</p>
+        <aside className="navigation">
+            <Link to={`/Income`}>
+              <button>Back</button>
+            </Link>
+            <Link to={`/Income/${IncomeItem.id}/edit`}>
+              <button>Edit</button>
+            </Link>
+            <button onClick={handleDelete}>Delete</button>
+        </aside>
+      </article>
+    </section>
   );
 }
 

@@ -1,0 +1,48 @@
+.transection-wrapper {
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+  }
+  
+  .transection-single {
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+    color: var(--primary);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  
+  .transection-single article {
+    padding: 10px 25px;
+  }
+  
+  .transection-single aside {
+    background: var(--primary);
+    color: var(--dark);
+  }
+  
+  .trnasection-single aside p {
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 25px;
+    padding: 0;
+    width: auto;
+  }
+  
+  .transection-single aside span {
+    font-weight: bold;
+  }
+  
+  .transection-single aside button {
+    background: none;
+    border: none;
+    color: var(--light);
+    cursor: pointer;
+    margin: 10px 25px;
+    text-decoration: underline;
+  }
+  
+  .transection-single aside button:hover {
+    text-decoration: none;
+  }
+  
