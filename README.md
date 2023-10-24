@@ -5,6 +5,8 @@
 The Simple Budgeting App is purposed to save & handle your basic income, and spending info by manually on the personal webpage.
 Currently, this app supports only for the personal use.
 
+- [URL](https://main--genuine-melomakarona-6f33bc.netlify.app/)
+
 ## Why Do I Develop This App?
 
 - This budget app is developped for the Pursuit 10.2 module 4 project.
@@ -14,28 +16,31 @@ Currently, this app supports only for the personal use.
 
 ## How To Use
 
+The main page will show total transection you have currently w/ a doughnut chart. It is based on the data from the back-end server.
+Clicking income on the nav bar will guide you into the total income transection table. And clicking each table row will guide you to the detail about each item.
+Item has 5 properties; item title, date, description, amount, source from whom.
 
+Same rule is applied for the spending link on the nav bar.
 
+clicking New entry will guide you for the new entry form for both income & spending; clicking the top left button to change income & spending mode.
 
+To delete or Edit single item, you have to click them on the detailed page.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clicking "SY's budget app" will guide you to the main page.
 
-## Expanding the ESLint configuration
+## Libraries, Frameworks, API that are used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Basic fetch() API from plain Javascript
+Javascript
+React
+React-router-dom
+React-chartjs2
+chartjs
+Typescript
+Vite
 
-- Configure the top-level `parserOptions` property like this:
+## Future Update
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Styling ASAP
+Filtering by date
+More detail for each transection
