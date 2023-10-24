@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { destroyIncome, getOneIncome } from "../../api/fetch";
 
+/**
+ * IncomeSingleItemDetails()
+ * =========================================
+ * renders income transection detail for single item
+ * 
+ * @returns {React.ReactElement}
+ */
 function IncomeSingleItemDetails() {
   const [IncomeItem, setIncomeItem] = useState(    {
     id: "",
@@ -27,6 +34,11 @@ function IncomeSingleItemDetails() {
       });
   }, [id]);
 
+  /**
+   * handleDelete()
+   * ==========================
+   * DELETE the specific item w/ id from the back-end server
+   */
   const handleDelete = () => {
     destroyIncome(String(id))
       .then(() => {

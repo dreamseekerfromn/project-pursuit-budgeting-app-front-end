@@ -3,7 +3,13 @@ import { getAllIncome } from "../../api/fetch.js";
 import IncomeSingleItem from "./IncomeSingleItem.js";
 import './Income.css';
 
-
+/**
+ * Income()
+ * ==============================
+ * render entire table for all income transections
+ * 
+ * @returns {React.ReactElement}
+ */
 function Income() {
   const [incomeItems, setIncomeItems] = useState([
     {
@@ -20,15 +26,12 @@ function Income() {
   ]);
 
   useEffect(() => {
-    console.log("HI, we entered to useEffect hook");
-    // we need to get data 
     getAllIncome()
       .then((IncomeJson) => {
         console.log(IncomeJson);
         setIncomeItems(IncomeJson);
       })
       .catch((err)=> {console.error(err);
-    console.log("Bye, we finished it");
   })},[]);
 
   return (

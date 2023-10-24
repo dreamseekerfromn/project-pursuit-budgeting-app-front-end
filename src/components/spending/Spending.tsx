@@ -3,6 +3,13 @@ import { getAllSpending } from "../../api/fetch.js";
 import SpendingSingleItem from "./SpendingSingleItem.js";
 import './Spending.css';
 
+/**
+ * Spending()
+ * ==============================
+ * render entire table for all spending transections
+ * 
+ * @returns {React.ReactElement}
+ */
 function Spending() {
   const [spendingItems, setSpendingItems] = useState([
     {

@@ -3,6 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getOneSpending, updateSpending } from "../../api/fetch";
 import { customInputEventBundle } from "../../interface/interface";
 
+/**
+ * SpendingEditForm()
+ * ==============================
+ * Page to PUT a updated data to spending.
+ * 
+ * @returns {React.ReactElement}
+ */
 function SpendingEditForm() {
   const params = useParams();
   let { id } = params;

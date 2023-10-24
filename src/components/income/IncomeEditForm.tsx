@@ -3,6 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getOneIncome, updateIncome } from "../../api/fetch";
 import { customInputEventBundle } from "../../interface/interface";
 
+/**
+ * IncomeEditForm()
+ * ==============================
+ * Page to PUT a updated data to income.
+ * 
+ * @returns {React.ReactElement}
+ */
 function IncomeEditForm() {
   const params = useParams();
   let { id } = params;
