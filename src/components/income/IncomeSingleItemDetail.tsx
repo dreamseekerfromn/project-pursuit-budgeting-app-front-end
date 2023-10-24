@@ -63,8 +63,8 @@ function IncomeSingleItemDetails() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {IncomeItem.sourceTitle}
       </h5>
-      <h6>{IncomeItem.amount}</h6>
-      <p>{IncomeItem.sourceDescription}</p>
+      <h6>Amount: ${IncomeItem.amount}</h6>
+      <p>Description: {IncomeItem.sourceDescription}</p>
       <div className="showNavigation">
         <div>
           {" "}

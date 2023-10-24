@@ -63,8 +63,8 @@ function SpendingSingleItemDetails() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {spendingItem.sourceTitle}
       </h5>
-      <h6>{spendingItem.amount}</h6>
-      <p>{spendingItem.sourceDescription}</p>
+      <h6>Amount: ${spendingItem.amount}</h6>
+      <p>Description: {spendingItem.sourceDescription}</p>
       <div className="showNavigation">
         <div>
           {" "}
