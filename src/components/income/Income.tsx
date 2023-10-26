@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getAllIncome } from "../../api/fetch.js";
 import IncomeSingleItem from "./IncomeSingleItem.js";
+import { singleItemProp } from "../../interface/interface.js";
 import "./Income.css";
 import "../../assets/styleIndex.css";
+import { useParams } from "react-router-dom";
 
 /**
  * Income()
@@ -25,17 +27,22 @@ function Income() {
       misc: {},
     },
   ]);
+  const {id} = useParams();
 
   useEffect(() => {
     getAllIncome()
       .then((IncomeJson) => {
-        console.log(IncomeJson);
-        setIncomeItems(IncomeJson);
+        if(id){
+          setIncomeItems(IncomeJson.filter((item:singleItemProp) => item.date == id));
+        }
+        else{
+          setIncomeItems(IncomeJson);
+        }
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="IncomeItems containers">

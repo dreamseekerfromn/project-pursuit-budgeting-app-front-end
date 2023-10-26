@@ -23,10 +23,12 @@ function App() {
           {/* shows */}
           <Route path="/" element={<Home />} />
           <Route path="/spending" element={<Spending />} />
+          <Route path="/spending/date/:id" element={<Spending />} />
           <Route path="/new" element={<NewEntryForm />} />
           <Route path="/spending/:id" element={<SpendingSingleItemDetail />} />
           <Route path="/spending/:id/edit" element={<SpendingEditForm />} />
           <Route path="/income" element={<Income />} />
+          <Route path="/income/date/:id" element={<Income />} />
           <Route path="/income/:id" element={<IncomeSingleItemDetails />} />
           <Route path="/income/:id/edit" element={<IncomeEditForm />} />
           <Route path='*' element={<FourOFour />} />

@@ -3,7 +3,8 @@ import { getAllSpending } from "../../api/fetch.js";
 import SpendingSingleItem from "./SpendingSingleItem.js";
 import "./Spending.css";
 import "../../assets/styleIndex.css"
-
+import { useParams } from "react-router-dom";
+import { singleItemProp } from "../../interface/interface.js";
 /**
  * Spending()
  * ==============================
@@ -25,17 +26,23 @@ function Spending() {
       misc: {},
     },
   ]);
+  const { id } = useParams();
 
   useEffect(() => {
     // we need to get data
     getAllSpending()
       .then((spendingJson) => {
-        setSpendingItems(spendingJson);
+        if(!id){
+          setSpendingItems(spendingJson);
+        }
+        else{
+          setSpendingItems(spendingJson.filter((item: singleItemProp)  => item.date == id));
+        }
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="SpendingItems container">
